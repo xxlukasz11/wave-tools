@@ -141,7 +141,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="chunk.cpp" />
+    <ClCompile Include="dataSubChunk.cpp" />
+    <ClCompile Include="fmtSubChunk.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="riffHeader.cpp" />
+    <ClCompile Include="subChunk.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="chunk.h" />
+    <ClInclude Include="dataSubChunk.h" />
+    <ClInclude Include="fmtSubChunk.h" />
+    <ClInclude Include="riffHeader.h" />
+    <ClInclude Include="subChunk.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
