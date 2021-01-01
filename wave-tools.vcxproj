@@ -141,18 +141,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bitsPerSample.cpp" />
     <ClCompile Include="chunk.cpp" />
     <ClCompile Include="dataSubChunk.cpp" />
     <ClCompile Include="fmtSubChunk.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="numChannels.cpp" />
+    <ClCompile Include="parameter.cpp" />
     <ClCompile Include="riffHeader.cpp" />
+    <ClCompile Include="sampleRate.cpp" />
     <ClCompile Include="subChunk.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bitsPerSample.h" />
     <ClInclude Include="chunk.h" />
     <ClInclude Include="dataSubChunk.h" />
     <ClInclude Include="fmtSubChunk.h" />
+    <ClInclude Include="numChannels.h" />
+    <ClInclude Include="parameter.h" />
     <ClInclude Include="riffHeader.h" />
+    <ClInclude Include="sampleRate.h" />
     <ClInclude Include="subChunk.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
