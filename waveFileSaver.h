@@ -18,6 +18,9 @@ private:
 	template<typename T>
 	void write(std::ofstream& stream, T value);
 
+	template<typename T>
+	void writeLE(std::ofstream& stream, T value);
+
 	const WaveFile& mWaveFile;
 };
 
@@ -26,6 +29,16 @@ inline void WaveFileSaver::write(std::ofstream& stream, T value) {
 	constexpr int size = sizeof(T);
 	constexpr uint8_t byteMask = 0xff;
 	for (int i = size - 1; i >= 0; --i) {
+		const uint8_t byte = (value >> (8 * i)) & byteMask;
+		stream.write(reinterpret_cast<const char*>(&byte), 1);
+	}
+}
+
+template<typename T>
+inline void WaveFileSaver::writeLE(std::ofstream& stream, T value) {
+	constexpr int size = sizeof(T);
+	constexpr uint8_t byteMask = 0xff;
+	for (int i = 0; i < size; ++i) {
 		const uint8_t byte = (value >> (8 * i)) & byteMask;
 		stream.write(reinterpret_cast<const char*>(&byte), 1);
 	}
