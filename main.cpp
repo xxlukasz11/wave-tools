@@ -8,11 +8,23 @@
 #include "waveFileSaver.h"
 #include <cmath>
 
+void printHex() {
+	std::ifstream ff("file.wav", std::fstream::binary);
+	for (int i = 0; i < 40; ++i) {
+		if (i % 4 == 0 && i != 0) {
+			std::cout << std::endl;
+		}
+		unsigned char byte;
+		ff.read(reinterpret_cast<char*>(&byte), 1);
+		std::cout << std::hex << (unsigned int)byte << " ";
+	}
+}
+
 int main() {
 	WaveFile file = WaveFileBuilder::newBuilder()
 		.setBitsPerSample(BitsPerSample::BITS_8)
 		.setNumChannels(NumChannels::CH_1)
-		.setSampleRate(SampleRate::FREQ_44100kHz)
+		.setSampleRate(SampleRate::FREQ_44100Hz)
 		.build();
 
 	DataBuffer buffer;
@@ -25,14 +37,6 @@ int main() {
 	WaveFileSaver saver(file);
 	saver.save("file.wav");
 
-	std::ifstream ff("file.wav", std::fstream::binary);
-	for (int i = 0; i < 40; ++i) {
-		if (i % 4 == 0 && i != 0) {
-			std::cout << std::endl;
-		}
-		unsigned char byte;
-		ff.read(reinterpret_cast<char*>(&byte), 1);
-		std::cout << std::hex << (unsigned int)byte << " ";
-	}
+	printHex();
 	return 0;
 }
