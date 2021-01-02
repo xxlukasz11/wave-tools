@@ -4,6 +4,7 @@
 #include "fmtSubChunk.h"
 #include "dataSubChunk.h"
 #include "dataBuffer.h"
+#include <string>
 
 class WaveFile {
 public:
@@ -14,6 +15,7 @@ public:
 	const RiffHeader& getRiffHeader() const;
 	const FmtSubChunk& getFmtSubChunk() const;
 	const DataSubChunk& getDataSubChunk() const;
+	void save(const std::string& fileName) const;
 
 private:
 	RiffHeaderPtr mRiffHeader;

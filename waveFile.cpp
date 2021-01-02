@@ -1,4 +1,5 @@
 #include "waveFile.h"
+#include "waveFileSaver.h"
 
 WaveFile::WaveFile(const RiffHeaderPtr& riffHeader, const FmtSubChunk& fmtSubChunk, const DataSubChunk& dataSubChunk) :
 	mRiffHeader(riffHeader),
@@ -24,4 +25,9 @@ const FmtSubChunk& WaveFile::getFmtSubChunk() const {
 
 const DataSubChunk& WaveFile::getDataSubChunk() const {
 	return mDataSubChunk;
+}
+
+void WaveFile::save(const std::string& fileName) const {
+	WaveFileSaver saver(*this);
+	saver.save(fileName);
 }

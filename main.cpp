@@ -34,8 +34,7 @@ int main() {
 	}
 
 	file.addData(buffer);
-	WaveFileSaver saver(file);
-	saver.save("file.wav");
+	file.save("file.wav");
 
 	printHex();
 	return 0;
