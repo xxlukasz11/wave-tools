@@ -12,7 +12,7 @@ void DataSubChunk::addData(const DataBuffer& data) {
 	mData.append(data);
 }
 
-void DataSubChunk::setData(DataBuffer&& data) {
+void DataSubChunk::addData(DataBuffer&& data) {
 	increaseSubChunkSize(data.size());
 	mData.append(std::move(data));
 }

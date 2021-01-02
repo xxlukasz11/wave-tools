@@ -152,6 +152,8 @@
     <ClCompile Include="riffHeader.cpp" />
     <ClCompile Include="sampleRate.cpp" />
     <ClCompile Include="subChunk.cpp" />
+    <ClCompile Include="waveFile.cpp" />
+    <ClCompile Include="waveFileBuilder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitsPerSample.h" />
@@ -164,6 +166,8 @@
     <ClInclude Include="riffHeader.h" />
     <ClInclude Include="sampleRate.h" />
     <ClInclude Include="subChunk.h" />
+    <ClInclude Include="waveFile.h" />
+    <ClInclude Include="waveFileBuilder.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

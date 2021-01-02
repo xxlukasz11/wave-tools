@@ -9,7 +9,7 @@ public:
 	DataSubChunk(Chunk& parentHeader);
 
 	void addData(const DataBuffer& data);
-	void setData(DataBuffer&& data);
+	void addData(DataBuffer&& data);
 
 	DataBuffer& data();
 	const DataBuffer& data() const;

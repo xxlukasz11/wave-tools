@@ -1,20 +1,17 @@
 #include <iostream>
 
-#include "riffHeader.h"
-#include "fmtSubChunk.h"
-#include "dataSubChunk.h"
+#include "waveFileBuilder.h"
 #include "sampleRate.h"
 #include "numChannels.h"
 #include "bitsPerSample.h"
 #include "dataBuffer.h"
 
 int main() {
-	RiffHeader riffHeader;
-	FmtSubChunk fmtChunk(riffHeader);
-	DataSubChunk dataChunk(riffHeader);
-	SampleRate::FREQ_44100kHz;
-	NumChannels::CH_2;
-	BitsPerSample::BITS_16;
+	WaveFile file = WaveFileBuilder::newBuilder()
+		.setBitsPerSample(BitsPerSample::BITS_16)
+		.setNumChannels(NumChannels::CH_2)
+		.setSampleRate(SampleRate::FREQ_44100kHz)
+		.build();
 
 	DataBuffer buffer;
 	buffer.append(1);
@@ -22,6 +19,5 @@ int main() {
 	buffer.append(b);
 	buffer.append(std::move(b));
 
-	dataChunk.addData(buffer);
 	return 0;
 }
