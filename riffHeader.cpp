@@ -6,3 +6,7 @@ constexpr uint32_t INITIAL_CHUNK_SZE = 4;
 
 RiffHeader::RiffHeader() : Chunk(CHUNK_ID, INITIAL_CHUNK_SZE), mFormat(FORMAT_WAVE) {
 }
+
+uint32_t RiffHeader::getFormat() const {
+    return mFormat;
+}

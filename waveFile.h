@@ -11,6 +11,10 @@ public:
 	void addData(const DataBuffer& dataBuffer);
 	void addData(DataBuffer&& dataBuffer);
 
+	const RiffHeader& getRiffHeader() const;
+	const FmtSubChunk& getFmtSubChunk() const;
+	const DataSubChunk& getDataSubChunk() const;
+
 private:
 	RiffHeader mRiffHeder;
 	FmtSubChunk mFmtSubChunk;

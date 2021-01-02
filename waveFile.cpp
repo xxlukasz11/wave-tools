@@ -13,3 +13,15 @@ void WaveFile::addData(const DataBuffer& dataBuffer) {
 void WaveFile::addData(DataBuffer&& dataBuffer) {
 	mDataSubChunk.addData(std::move(dataBuffer));
 }
+
+const RiffHeader& WaveFile::getRiffHeader() const {
+	return mRiffHeder;
+}
+
+const FmtSubChunk& WaveFile::getFmtSubChunk() const {
+	return mFmtSubChunk;
+}
+
+const DataSubChunk& WaveFile::getDataSubChunk() const {
+	return mDataSubChunk;
+}

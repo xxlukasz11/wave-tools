@@ -154,6 +154,7 @@
     <ClCompile Include="subChunk.cpp" />
     <ClCompile Include="waveFile.cpp" />
     <ClCompile Include="waveFileBuilder.cpp" />
+    <ClCompile Include="waveFileSaver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitsPerSample.h" />
@@ -168,6 +169,7 @@
     <ClInclude Include="subChunk.h" />
     <ClInclude Include="waveFile.h" />
     <ClInclude Include="waveFileBuilder.h" />
+    <ClInclude Include="waveFileSaver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

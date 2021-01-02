@@ -15,3 +15,27 @@ FmtSubChunk::FmtSubChunk(Chunk& parentHeader, const uint16_t numChannels,
 	mBlockAlign(blockAlign),
 	mBitsPerSample(bitsPerSample) {
 }
+
+uint16_t FmtSubChunk::getAudioFormat() const {
+	return mAudioFormat;
+}
+
+uint16_t FmtSubChunk::getNumChannels() const {
+	return mNumChannels;
+}
+
+uint32_t FmtSubChunk::getSampleRate() const {
+	return mSampleRate;
+}
+
+uint32_t FmtSubChunk::getByteRate() const {
+	return mByteRate;
+}
+
+uint16_t FmtSubChunk::getBlockAlign() const {
+	return mBlockAlign;
+}
+
+uint16_t FmtSubChunk::getBitsPerSample() const {
+	return mBitsPerSample;
+}

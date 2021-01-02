@@ -1,10 +1,12 @@
 #include "waveFileBuilder.h"
 
+constexpr uint8_t BITS_IN_BYTE = 8;
+
 WaveFile WaveFileBuilder::build() {
     const uint32_t sampleRate = mSampleRate.getValue();
     const uint16_t bitsPerSample = mBitsPerSample.getValue();
     const uint16_t numChannels = mNumChannels.getValue();
-    const uint16_t blockAlign = numChannels * bitsPerSample / 8;
+    const uint16_t blockAlign = (bitsPerSample / BITS_IN_BYTE) * numChannels;
     const uint32_t byteRate = blockAlign * sampleRate;
 
     RiffHeader riffHeader;
