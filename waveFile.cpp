@@ -1,7 +1,7 @@
 #include "waveFile.h"
 
-WaveFile::WaveFile(const RiffHeader& riffHeader, const FmtSubChunk& fmtSubChunk, const DataSubChunk& dataSubChunk) :
-	mRiffHeder(riffHeader),
+WaveFile::WaveFile(const RiffHeaderPtr& riffHeader, const FmtSubChunk& fmtSubChunk, const DataSubChunk& dataSubChunk) :
+	mRiffHeader(riffHeader),
 	mFmtSubChunk(fmtSubChunk),
 	mDataSubChunk(dataSubChunk) {
 }
@@ -15,7 +15,7 @@ void WaveFile::addData(DataBuffer&& dataBuffer) {
 }
 
 const RiffHeader& WaveFile::getRiffHeader() const {
-	return mRiffHeder;
+	return *mRiffHeader;
 }
 
 const FmtSubChunk& WaveFile::getFmtSubChunk() const {

@@ -3,7 +3,7 @@
 constexpr uint32_t DATA_SUBCHUNK_ID = 0x64617461; // "data"
 constexpr uint32_t INITIAL_DATA_SUBCHUNK_SIZE = 0;
 
-DataSubChunk::DataSubChunk(Chunk& parentHeader) :
+DataSubChunk::DataSubChunk(const ChunkPtr& parentHeader) :
 	SubChunk(parentHeader, DATA_SUBCHUNK_ID, INITIAL_DATA_SUBCHUNK_SIZE) {
 }
 

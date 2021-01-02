@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <memory>
 
 class Chunk {
 public:
@@ -15,3 +16,4 @@ private:
 	uint32_t mChunkSize;
 };
 
+using ChunkPtr = std::shared_ptr<Chunk>;

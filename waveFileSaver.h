@@ -26,7 +26,7 @@ inline void WaveFileSaver::write(std::ofstream& stream, T value) {
 	constexpr int size = sizeof(T);
 	constexpr uint8_t byteMask = 0xff;
 	for (int i = size - 1; i >= 0; --i) {
-		const auto byte = (value >> (8 * i)) & byteMask;
+		const uint8_t byte = (value >> (8 * i)) & byteMask;
 		stream.write(reinterpret_cast<const char*>(&byte), 1);
 	}
 }

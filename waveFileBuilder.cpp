@@ -9,7 +9,7 @@ WaveFile WaveFileBuilder::build() {
     const uint16_t blockAlign = (bitsPerSample / BITS_IN_BYTE) * numChannels;
     const uint32_t byteRate = blockAlign * sampleRate;
 
-    RiffHeader riffHeader;
+    RiffHeaderPtr riffHeader(new RiffHeader);
     FmtSubChunk fmtSubChunk(riffHeader, numChannels, sampleRate, byteRate, blockAlign, bitsPerSample);
     DataSubChunk dataSubChunk(riffHeader);
     return WaveFile(riffHeader, fmtSubChunk, dataSubChunk);

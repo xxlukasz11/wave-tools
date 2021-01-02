@@ -12,3 +12,4 @@ private:
 	uint32_t mFormat;
 };
 
+using RiffHeaderPtr = std::shared_ptr<RiffHeader>;

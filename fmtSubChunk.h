@@ -6,7 +6,7 @@
 
 class FmtSubChunk : public SubChunk {
 public:
-	FmtSubChunk(Chunk& parentHeader, const uint16_t numChannels,
+	FmtSubChunk(const ChunkPtr& parentHeader, const uint16_t numChannels,
 		const uint32_t sampleRate, const uint32_t byteRate,
 		const uint16_t blockAlign, uint16_t bitsPerSample);
 	uint16_t getAudioFormat() const;

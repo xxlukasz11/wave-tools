@@ -7,7 +7,7 @@
 
 class WaveFile {
 public:
-	WaveFile(const RiffHeader& riffHEeader, const FmtSubChunk& fmtSubChunk, const DataSubChunk& dataSubChunk);
+	WaveFile(const RiffHeaderPtr& riffHEeader, const FmtSubChunk& fmtSubChunk, const DataSubChunk& dataSubChunk);
 	void addData(const DataBuffer& dataBuffer);
 	void addData(DataBuffer&& dataBuffer);
 
@@ -16,7 +16,7 @@ public:
 	const DataSubChunk& getDataSubChunk() const;
 
 private:
-	RiffHeader mRiffHeder;
+	RiffHeaderPtr mRiffHeader;
 	FmtSubChunk mFmtSubChunk;
 	DataSubChunk mDataSubChunk;
 };

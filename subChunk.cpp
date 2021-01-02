@@ -1,9 +1,10 @@
 #include "subChunk.h"
 
-SubChunk::SubChunk(Chunk& masterChunk, const uint32_t subChunkId, const uint32_t initialSubChunkSize) :
+SubChunk::SubChunk(const ChunkPtr& masterChunk, const uint32_t subChunkId, const uint32_t initialSubChunkSize) :
 	mMasterChunk(masterChunk),
 	mSubChunkId(subChunkId),
 	mSubChunkSize(initialSubChunkSize) {
+	mMasterChunk->increaseChunkSize(mSubChunkSize);
 }
 
 uint32_t SubChunk::getSubChunkId() const {
@@ -16,5 +17,5 @@ uint32_t SubChunk::getSubChunkSize() const {
 
 void SubChunk::increaseSubChunkSize(const int noOfBytes) {
 	mSubChunkSize += noOfBytes;
-	mMasterChunk.increaseChunkSize(noOfBytes);
+	mMasterChunk->increaseChunkSize(noOfBytes);
 }

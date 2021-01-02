@@ -6,7 +6,7 @@
 
 class DataSubChunk : public SubChunk {
 public:
-	DataSubChunk(Chunk& parentHeader);
+	DataSubChunk(const ChunkPtr& parentHeader);
 
 	void addData(const DataBuffer& data);
 	void addData(DataBuffer&& data);
