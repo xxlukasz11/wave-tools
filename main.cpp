@@ -6,6 +6,7 @@
 #include "sampleRate.h"
 #include "numChannels.h"
 #include "bitsPerSample.h"
+#include "dataBuffer.h"
 
 int main() {
 	RiffHeader riffHeader;
@@ -14,5 +15,13 @@ int main() {
 	SampleRate::FREQ_44100kHz;
 	NumChannels::CH_2;
 	BitsPerSample::BITS_16;
+
+	DataBuffer buffer;
+	buffer.append(1);
+	DataBuffer::DataType b{ 2,3,4 };
+	buffer.append(b);
+	buffer.append(std::move(b));
+
+	dataChunk.addData(buffer);
 	return 0;
 }

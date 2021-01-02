@@ -143,6 +143,7 @@
   <ItemGroup>
     <ClCompile Include="bitsPerSample.cpp" />
     <ClCompile Include="chunk.cpp" />
+    <ClCompile Include="dataBuffer.cpp" />
     <ClCompile Include="dataSubChunk.cpp" />
     <ClCompile Include="fmtSubChunk.cpp" />
     <ClCompile Include="main.cpp" />
@@ -155,6 +156,7 @@
   <ItemGroup>
     <ClInclude Include="bitsPerSample.h" />
     <ClInclude Include="chunk.h" />
+    <ClInclude Include="dataBuffer.h" />
     <ClInclude Include="dataSubChunk.h" />
     <ClInclude Include="fmtSubChunk.h" />
     <ClInclude Include="numChannels.h" />
