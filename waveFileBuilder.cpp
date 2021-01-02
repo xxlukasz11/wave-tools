@@ -16,7 +16,7 @@ WaveFile WaveFileBuilder::build() {
 }
 
 WaveFileBuilder::WaveFileBuilder() :
-    mSampleRate(SampleRate::FREQ_44100kHz),
+    mSampleRate(SampleRate::FREQ_44100Hz),
     mBitsPerSample(BitsPerSample::BITS_16),
     mNumChannels(NumChannels::CH_2) {
 }

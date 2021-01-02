@@ -14,25 +14,13 @@ private:
 	void writeRiffHeader(std::ofstream& stream);
 	void writeFmtSubChunk(std::ofstream& stream);
 	void writeDataSubChunk(std::ofstream& stream);
-
-	template<typename T>
-	void write(std::ofstream& stream, T value);
+	void writeId(std::ofstream& stream, uint32_t value);
 
 	template<typename T>
 	void writeLE(std::ofstream& stream, T value);
 
 	const WaveFile& mWaveFile;
 };
-
-template<typename T>
-inline void WaveFileSaver::write(std::ofstream& stream, T value) {
-	constexpr int size = sizeof(T);
-	constexpr uint8_t byteMask = 0xff;
-	for (int i = size - 1; i >= 0; --i) {
-		const uint8_t byte = (value >> (8 * i)) & byteMask;
-		stream.write(reinterpret_cast<const char*>(&byte), 1);
-	}
-}
 
 template<typename T>
 inline void WaveFileSaver::writeLE(std::ofstream& stream, T value) {

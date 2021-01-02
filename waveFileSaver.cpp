@@ -13,14 +13,14 @@ void WaveFileSaver::save(const std::string& fileName) {
 
 void WaveFileSaver::writeRiffHeader(std::ofstream& stream) {
 	const auto& riffHeader = mWaveFile.getRiffHeader();
-	write(stream, riffHeader.getChunkId());
+	writeId(stream, riffHeader.getChunkId());
 	writeLE(stream, riffHeader.getChunkSize());
-	write(stream, riffHeader.getFormat());
+	writeId(stream, riffHeader.getFormat());
 }
 
 void WaveFileSaver::writeFmtSubChunk(std::ofstream& stream) {
 	const auto& fmt = mWaveFile.getFmtSubChunk();
-	write(stream, fmt.getSubChunkId());
+	writeId(stream, fmt.getSubChunkId());
 	writeLE(stream, fmt.getSubChunkSize());
 	writeLE(stream, fmt.getAudioFormat());
 	writeLE(stream, fmt.getNumChannels());
@@ -32,8 +32,16 @@ void WaveFileSaver::writeFmtSubChunk(std::ofstream& stream) {
 
 void WaveFileSaver::writeDataSubChunk(std::ofstream& stream) {
 	const auto& dataSubChunk = mWaveFile.getDataSubChunk();
-	write(stream, dataSubChunk.getSubChunkId());
+	writeId(stream, dataSubChunk.getSubChunkId());
 	writeLE(stream, dataSubChunk.getSubChunkSize());
 	const auto& buffer = dataSubChunk.data().getBuffer();
 	stream.write(reinterpret_cast<const char*>(buffer.data()), buffer.size());
+}
+
+void WaveFileSaver::writeId(std::ofstream& stream, uint32_t value) {
+	constexpr uint8_t byteMask = 0xff;
+	for (int i = 3; i >= 0; --i) {
+		const uint8_t byte = (value >> (8 * i)) & byteMask;
+		stream.write(reinterpret_cast<const char*>(&byte), 1);
+	}
 }
