@@ -1,26 +1,24 @@
 #pragma once
 
 #include "duration.h"
+#include <cstdint>
 
 class DurationHandler {
 public:
+	DurationHandler();
+	void setDuration(const Duration& duration);
+	void setNoOfPeriods(const unsigned int noOfPeriods);
+	void setNoOfSamples(const unsigned int noOfSamples);
+
+	uint64_t calculateNoOfSamples(const uint32_t sampleRate, const uint32_t signalFrequency) const;
+
+private:
 	enum class Mode {
 		DURATION,
 		PERIODS,
 		SAMPLES
 	};
-	
-	DurationHandler();
-	Mode getMode() const;
-	void setDuration(const Duration& duration);
-	void setNoOfPeriods(const unsigned int noOfPeriods);
-	void setNoOfSamples(const unsigned int noOfSamples);
 
-	Duration getDuration() const;
-	unsigned int getNoOfPeriods() const;
-	unsigned int getNoOfSamples() const;
-
-private:
 	Mode mMode;
 	Duration mDuration;
 	unsigned int mNoOfPeriods;

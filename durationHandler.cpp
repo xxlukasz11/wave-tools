@@ -3,10 +3,6 @@
 DurationHandler::DurationHandler() : mMode(Mode::DURATION), mDuration(Duration::ZERO), mNoOfPeriods(0), mNoOfSamples(0) {
 }
 
-DurationHandler::Mode DurationHandler::getMode() const {
-	return mMode;
-}
-
 void DurationHandler::setDuration(const Duration& duration) {
 	mDuration = duration;
 	mMode = Mode::DURATION;
@@ -22,14 +18,12 @@ void DurationHandler::setNoOfSamples(const unsigned int noOfSamples) {
 	mMode = Mode::SAMPLES;
 }
 
-Duration DurationHandler::getDuration() const {
-	return mDuration;
-}
-
-unsigned int DurationHandler::getNoOfPeriods() const {
-	return mNoOfPeriods;
-}
-
-unsigned int DurationHandler::getNoOfSamples() const {
+uint64_t DurationHandler::calculateNoOfSamples(const uint32_t sampleRate, const uint32_t signalFrequency) const {
+	if (mMode == Mode::PERIODS) {
+		return static_cast<uint64_t>(mNoOfPeriods) * sampleRate / signalFrequency;
+	}
+	if (mMode == Mode::DURATION) {
+		return mDuration.realSeconds() * sampleRate;
+	}
 	return mNoOfSamples;
 }
