@@ -141,11 +141,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="amplitudeHandler.cpp" />
     <ClCompile Include="bitsPerSample.cpp" />
     <ClCompile Include="chunk.cpp" />
     <ClCompile Include="dataBuffer.cpp" />
     <ClCompile Include="dataSubChunk.cpp" />
+    <ClCompile Include="duration.cpp" />
+    <ClCompile Include="durationHandler.cpp" />
     <ClCompile Include="fmtSubChunk.cpp" />
+    <ClCompile Include="frequency.cpp" />
+    <ClCompile Include="frequencyHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="numChannels.cpp" />
     <ClCompile Include="parameter.cpp" />
@@ -155,13 +160,19 @@
     <ClCompile Include="waveFile.cpp" />
     <ClCompile Include="waveFileBuilder.cpp" />
     <ClCompile Include="waveFileSaver.cpp" />
+    <ClCompile Include="waveformBuilder.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="amplitudeHandler.h" />
     <ClInclude Include="bitsPerSample.h" />
     <ClInclude Include="chunk.h" />
     <ClInclude Include="dataBuffer.h" />
     <ClInclude Include="dataSubChunk.h" />
+    <ClInclude Include="duration.h" />
+    <ClInclude Include="durationHandler.h" />
     <ClInclude Include="fmtSubChunk.h" />
+    <ClInclude Include="frequency.h" />
+    <ClInclude Include="frequencyHandler.h" />
     <ClInclude Include="numChannels.h" />
     <ClInclude Include="parameter.h" />
     <ClInclude Include="riffHeader.h" />
@@ -170,6 +181,7 @@
     <ClInclude Include="waveFile.h" />
     <ClInclude Include="waveFileBuilder.h" />
     <ClInclude Include="waveFileSaver.h" />
+    <ClInclude Include="waveformBuilder.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
