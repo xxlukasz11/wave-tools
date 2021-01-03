@@ -19,13 +19,18 @@ DataBuffer SineWaveformBuilder::generateWaveform(const FmtSubChunk& fmtSubChunk)
     DataBuffer buffer(noOfSamples*blockAlign);
 
     const auto bytesPerSample = bitsPerSample / 8;
-    for (uint64_t i = 0; i < noOfSamples; ++i) {
-        uint64_t value = offset + amplitude * sin(2 * PI * frequency / sampleRate * i);
-        for (int channel = 0; channel < numChannels; ++channel) {
-            for (int byteIndex = 0; byteIndex < bytesPerSample; ++byteIndex) {
-                buffer.append((value >> (byteIndex * 8)) & BYTE_MASK);
-            }
-        }
+    for (uint64_t timeIndex = 0; timeIndex < noOfSamples; ++timeIndex) {
+        uint64_t value = offset + amplitude * sin(2 * PI * frequency / sampleRate * timeIndex);
+        appendForEveryChannel(buffer, value, numChannels, bytesPerSample);
     }
     return buffer;
+}
+
+void SineWaveformBuilder::appendForEveryChannel(DataBuffer& buffer,
+    const uint64_t value, const int numChannels, const int bytesPerSample) const {
+    for (int channel = 0; channel < numChannels; ++channel) {
+        for (int byteIndex = 0; byteIndex < bytesPerSample; ++byteIndex) {
+            buffer.append((value >> (byteIndex * 8)) & BYTE_MASK);
+        }
+    }
 }

@@ -1,13 +1,9 @@
 #include <iostream>
 
 #include "waveFileBuilder.h"
-#include "sampleRate.h"
-#include "numChannels.h"
-#include "bitsPerSample.h"
-#include "dataBuffer.h"
-#include <fstream>
 #include "sineWaveformBuilder.h"
 #include <cmath>
+#include <fstream>
 
 void printHex() {
 	std::ifstream ff("file.wav", std::fstream::binary);
