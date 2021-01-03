@@ -26,7 +26,7 @@ protected:
 	const AmplitudeHandler& getAmplitudeHandler() const;
 
 private:
-	virtual DataBuffer generateWaveform(const uint16_t bitsPerSample) const = 0;
+	virtual DataBuffer generateWaveform(const FmtSubChunk& fmtSubChunk) const = 0;
 	T& self();
 
 	DurationHandler mDurationHandler;
@@ -93,8 +93,8 @@ T& WaveformBuilder<T>::setPeriod(const Duration& period) {
 
 template<typename T>
 T& WaveformBuilder<T>::appendWaveformToFile(WaveFile& waveFile) {
-	DataBuffer data = generateWaveform(waveFile.getFmtSubChunk().getBitsPerSample());
-	// TODO swap endianess
+	DataBuffer waveform = generateWaveform(waveFile.getFmtSubChunk());
+	waveFile.addData(std::move(waveform));
 	return self();
 }
 

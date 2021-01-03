@@ -23,7 +23,7 @@ uint64_t DurationHandler::calculateNoOfSamples(const uint32_t sampleRate, const 
 		return static_cast<uint64_t>(mNoOfPeriods) * sampleRate / signalFrequency;
 	}
 	if (mMode == Mode::DURATION) {
-		return mDuration.realSeconds() * sampleRate;
+		return static_cast<uint64_t>(mDuration.realSeconds() * sampleRate);
 	}
 	return mNoOfSamples;
 }

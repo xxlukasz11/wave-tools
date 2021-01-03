@@ -4,9 +4,10 @@
 
 class SineWaveformBuilder : public WaveformBuilder<SineWaveformBuilder> {
 public:
-	SineWaveformBuilder& set() { return *this;  }
+	static SineWaveformBuilder newBuilder();
 
 private:
-	DataBuffer generateWaveform(const uint16_t bitsPerSample) const override;
+	SineWaveformBuilder() = default;
+	DataBuffer generateWaveform(const FmtSubChunk& fmtSubChunk) const override;
 };
 

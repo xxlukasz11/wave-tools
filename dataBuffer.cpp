@@ -1,5 +1,9 @@
 #include "dataBuffer.h"
 
+DataBuffer::DataBuffer(const size_t initialSize) {
+    mBuffer.reserve(initialSize);
+}
+
 const DataBuffer::DataType& DataBuffer::getBuffer() const {
     return mBuffer;
 }

@@ -23,22 +23,19 @@ void printHex() {
 
 int main() {
 	WaveFile file = WaveFileBuilder::newBuilder()
-		.setBitsPerSample(BitsPerSample::BITS_8)
-		.setNumChannels(NumChannels::CH_1)
+		.setBitsPerSample(BitsPerSample::BITS_16)
+		.setNumChannels(NumChannels::CH_2)
 		.setSampleRate(SampleRate::FREQ_44100Hz)
 		.build();
 
-	DataBuffer buffer;
-	int freq = 400;
-	for (int i = 0; i < 88200; ++i) {
-		buffer.append(127 + 127 * sin(i * 2 * 3.14 * freq / 44100.0));
-	}
-
-	file.addData(buffer);
-	file.save("file.wav");
-
 	printHex();
 
-	SineWaveformBuilder().set().set().setAmplitudeByPercentage(0.2).set();
+	SineWaveformBuilder::newBuilder()
+		.setAmplitudeByPercentage(0.3)
+		.setFrequency(Frequency::ofHertz(200))
+		.setDuration(Duration::ofSeconds(3))
+		.appendWaveformToFile(file);
+
+	file.save("file.wav");
 	return 0;
 }

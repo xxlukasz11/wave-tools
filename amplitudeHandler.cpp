@@ -22,7 +22,7 @@ uint64_t AmplitudeHandler::calculateAmplitude(const uint32_t bitsPerSample) cons
 	if (mMode == Mode::VALUE) {
 		return std::min(mValue, maxValue);
 	}
-	return mPercentage * maxValue;
+	return static_cast<uint64_t>(mPercentage * maxValue);
 }
 
 uint32_t AmplitudeHandler::calculateOffset(const uint32_t bitsPerSample) const {

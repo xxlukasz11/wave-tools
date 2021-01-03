@@ -8,6 +8,8 @@ public:
 	using ByteType = uint8_t;
 	using DataType = std::vector<ByteType>;
 
+	DataBuffer() = default;
+	DataBuffer(const size_t initialSize);
 	const DataType& getBuffer() const;
 	size_t size() const;
 	
