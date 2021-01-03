@@ -156,6 +156,7 @@
     <ClCompile Include="parameter.cpp" />
     <ClCompile Include="riffHeader.cpp" />
     <ClCompile Include="sampleRate.cpp" />
+    <ClCompile Include="sineWaveformBuilder.cpp" />
     <ClCompile Include="subChunk.cpp" />
     <ClCompile Include="waveFile.cpp" />
     <ClCompile Include="waveFileBuilder.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="parameter.h" />
     <ClInclude Include="riffHeader.h" />
     <ClInclude Include="sampleRate.h" />
+    <ClInclude Include="sineWaveformBuilder.h" />
     <ClInclude Include="subChunk.h" />
     <ClInclude Include="waveFile.h" />
     <ClInclude Include="waveFileBuilder.h" />

@@ -5,7 +5,8 @@
 #include "numChannels.h"
 #include "bitsPerSample.h"
 #include "dataBuffer.h"
-#include "waveFileSaver.h"
+#include <fstream>
+#include "sineWaveformBuilder.h"
 #include <cmath>
 
 void printHex() {
@@ -37,5 +38,7 @@ int main() {
 	file.save("file.wav");
 
 	printHex();
+
+	SineWaveformBuilder().set().set().setAmplitudeByPercentage(0.2).set();
 	return 0;
 }
