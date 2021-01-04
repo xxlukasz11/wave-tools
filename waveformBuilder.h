@@ -26,7 +26,13 @@ protected:
 	const AmplitudeHandler& getAmplitudeHandler() const;
 
 private:
-	virtual DataBuffer generateWaveform(const FmtSubChunk& fmtSubChunk) const = 0;
+	virtual uint64_t calculateSampleValue(const uint64_t timeIndex, const uint64_t amplitude,
+		const uint32_t frequency, const uint32_t sampleRate) const = 0;
+
+	DataBuffer generateWaveform(const FmtSubChunk& fmtSubChunk) const;
+	void appendForEveryChannel(DataBuffer& buffer, const uint64_t value,
+		const int numChannels, const int bytesPerSample) const;
+
 	T& self();
 
 	DurationHandler mDurationHandler;
@@ -96,6 +102,37 @@ T& WaveformBuilder<T>::appendWaveformToFile(WaveFile& waveFile) {
 	DataBuffer waveform = generateWaveform(waveFile.getFmtSubChunk());
 	waveFile.addData(std::move(waveform));
 	return self();
+}
+
+template<typename T>
+DataBuffer WaveformBuilder<T>::generateWaveform(const FmtSubChunk& fmtSubChunk) const {
+	const auto bitsPerSample = fmtSubChunk.getBitsPerSample();
+	const auto blockAlign = fmtSubChunk.getBlockAlign();
+	const auto sampleRate = fmtSubChunk.getSampleRate();
+	const auto numChannels = fmtSubChunk.getNumChannels();
+	const auto frequency = mFrequencyHandler.getFrequency().hertz();
+	const auto noOfSamples = mDurationHandler.calculateNoOfSamples(sampleRate, frequency);
+	const auto amplitude = mAmplitudeHandler.calculateAmplitude(bitsPerSample);
+	const auto offset = mAmplitudeHandler.calculateOffset(bitsPerSample);
+	const auto bytesPerSample = bitsPerSample / 8;
+
+	DataBuffer buffer(noOfSamples * blockAlign);
+	for (uint64_t timeIndex = 0; timeIndex < noOfSamples; ++timeIndex) {
+		const uint64_t value = offset + calculateSampleValue(timeIndex, amplitude, frequency, sampleRate);
+		appendForEveryChannel(buffer, value, numChannels, bytesPerSample);
+	}
+	return buffer;
+}
+
+template<typename T>
+void WaveformBuilder<T>::appendForEveryChannel(DataBuffer& buffer,
+	const uint64_t value, const int numChannels, const int bytesPerSample) const {
+	constexpr uint8_t BYTE_MASK = 0xff;
+	for (int channel = 0; channel < numChannels; ++channel) {
+		for (int byteIndex = 0; byteIndex < bytesPerSample; ++byteIndex) {
+			buffer.append((value >> (byteIndex * 8)) & BYTE_MASK);
+		}
+	}
 }
 
 template<typename T>
