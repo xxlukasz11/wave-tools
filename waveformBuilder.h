@@ -13,8 +13,8 @@ public:
 	T& setAmplitudeByValue(const uint64_t value);
 	T& setAmplitudeByPercentage(const double percentage);
 	T& setDuration(const Duration& duration);
-	T& setDurationByNoOfPeriods(const unsigned int noOfPeriods);
-	T& setDurationByNoOfSamples(const unsigned int noOfSamples);
+	T& setDurationByNoOfPeriods(const uint32_t noOfPeriods);
+	T& setDurationByNoOfSamples(const uint32_t noOfSamples);
 	T& setFrequency(const Frequency& frequency);
 	T& setPeriod(const Duration& period);
 
@@ -74,13 +74,13 @@ T& WaveformBuilder<T>::setDuration(const Duration& duration) {
 }
 
 template<typename T>
-T& WaveformBuilder<T>::setDurationByNoOfPeriods(const unsigned int noOfPeriods) {
+T& WaveformBuilder<T>::setDurationByNoOfPeriods(const uint32_t noOfPeriods) {
 	mDurationHandler.setNoOfPeriods(noOfPeriods);
 	return self();
 }
 
 template<typename T>
-T& WaveformBuilder<T>::setDurationByNoOfSamples(const unsigned int noOfSamples) {
+T& WaveformBuilder<T>::setDurationByNoOfSamples(const uint32_t noOfSamples) {
 	mDurationHandler.setNoOfSamples(noOfSamples);
 	return self();
 }

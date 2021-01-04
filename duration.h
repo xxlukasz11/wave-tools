@@ -1,21 +1,23 @@
 #pragma once
 
+#include <cstdint>
+
 class Duration {
 public:
 	static Duration ZERO;
-	static Duration ofMicroSeconds(const unsigned int microSeconds);
-	static Duration ofMilliSeconds(const unsigned int milliSeconds);
-	static Duration ofSeconds(const unsigned int seconds);
-	static Duration ofMinutes(const unsigned int minutes);
+	static Duration ofMicroSeconds(const uint32_t microSeconds);
+	static Duration ofMilliSeconds(const uint32_t milliSeconds);
+	static Duration ofSeconds(const uint32_t seconds);
+	static Duration ofMinutes(const uint32_t minutes);
 
-	unsigned int seconds() const;
-	unsigned int microSeconds() const;
+	uint32_t seconds() const;
+	uint32_t microSeconds() const;
 	double realSeconds() const;
 
 private:
-	Duration(const unsigned int seconds, const unsigned int microSeconds);
+	Duration(const uint32_t seconds, const uint32_t microSeconds);
 
-	unsigned int mSeconds;
-	unsigned int mMicroSeconds;
+	uint32_t mSeconds;
+	uint32_t mMicroSeconds;
 };
 

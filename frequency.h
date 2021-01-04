@@ -1,17 +1,18 @@
 #pragma once
 
+#include <cstdint>
+
 class Frequency {
 public:
 	static Frequency ZERO;
-	static Frequency ofHertz(const unsigned int hertz);
-	static Frequency ofKiloHertz(const unsigned int kiloHertz);
-	static Frequency ofMegaHertz(const unsigned int megaHertz);
+	static Frequency ofHertz(const uint32_t hertz);
+	static Frequency ofKiloHertz(const uint32_t kiloHertz);
+	static Frequency ofMegaHertz(const uint32_t megaHertz);
 
-	unsigned int hertz() const;
+	uint32_t hertz() const;
 
 private:
-	Frequency(const unsigned int hertz);
+	Frequency(const uint32_t hertz);
 
-	unsigned int mHertz;
+	uint32_t mHertz;
 };
-

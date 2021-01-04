@@ -8,5 +8,5 @@ SineWaveformBuilder SineWaveformBuilder::newBuilder() {
 
 uint64_t SineWaveformBuilder::calculateSampleValue(const uint64_t timeIndex, const uint64_t amplitude,
     const uint32_t frequency, const uint32_t sampleRate) const {
-    return amplitude * sin(2 * PI * frequency / sampleRate * timeIndex);
+    return static_cast<uint64_t>(amplitude * sin(2 * PI * frequency / sampleRate * timeIndex));
 }

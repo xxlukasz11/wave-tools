@@ -20,4 +20,3 @@ private:
 	uint64_t mValue;
 	double mPercentage;
 };
-

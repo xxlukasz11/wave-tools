@@ -8,7 +8,7 @@ void FrequencyHandler::setFrequency(const Frequency& frequency) {
 }
 
 void FrequencyHandler::setPeriod(const Duration& duration) {
-	const auto hertz = static_cast<unsigned int>(1.0 / duration.realSeconds());
+	const auto hertz = static_cast<uint32_t>(1.0 / duration.realSeconds());
 	mFrequency = Frequency::ofHertz(hertz);
 }
 

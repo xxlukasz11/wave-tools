@@ -7,10 +7,10 @@ class DurationHandler {
 public:
 	DurationHandler();
 	void setDuration(const Duration& duration);
-	void setNoOfPeriods(const unsigned int noOfPeriods);
-	void setNoOfSamples(const unsigned int noOfSamples);
+	void setNoOfPeriods(const uint32_t noOfPeriods);
+	void setNoOfSamples(const uint32_t noOfSamples);
 
-	uint64_t calculateNoOfSamples(const uint32_t sampleRate, const uint32_t signalFrequency) const;
+	uint32_t calculateNoOfSamples(const uint32_t sampleRate, const uint32_t signalFrequency) const;
 
 private:
 	enum class Mode {
@@ -21,7 +21,7 @@ private:
 
 	Mode mMode;
 	Duration mDuration;
-	unsigned int mNoOfPeriods;
-	unsigned int mNoOfSamples;
+	uint32_t mNoOfPeriods;
+	uint32_t mNoOfSamples;
 };
 
