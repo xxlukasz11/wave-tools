@@ -26,11 +26,12 @@ int main() {
 
 	printHex();
 
-	SineWaveformBuilder::newBuilder()
+	const WaveformBuilder& builder = SineWaveformBuilder::newBuilder()
 		.setAmplitudeByPercentage(0.3)
 		.setFrequency(Frequency::ofHertz(200))
-		.setDuration(Duration::ofSeconds(3))
-		.appendWaveformToFile(file);
+		.setDuration(Duration::ofSeconds(3));
+
+	builder.appendWaveformToFile(file);
 
 	file.save("file.wav");
 	return 0;

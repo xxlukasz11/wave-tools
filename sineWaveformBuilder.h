@@ -1,8 +1,8 @@
 #pragma once
 
-#include "waveformBuilder.h"
+#include "waveformBuilderBase.h"
 
-class SineWaveformBuilder : public WaveformBuilder<SineWaveformBuilder> {
+class SineWaveformBuilder : public WaveformBuilderBase<SineWaveformBuilder> {
 public:
 	static SineWaveformBuilder newBuilder();
 

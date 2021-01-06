@@ -161,7 +161,7 @@
     <ClCompile Include="waveFile.cpp" />
     <ClCompile Include="waveFileBuilder.cpp" />
     <ClCompile Include="waveFileSaver.cpp" />
-    <ClCompile Include="waveformBuilder.cpp" />
+    <ClCompile Include="WaveformBuilder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="amplitudeHandler.h" />
@@ -183,7 +183,8 @@
     <ClInclude Include="waveFile.h" />
     <ClInclude Include="waveFileBuilder.h" />
     <ClInclude Include="waveFileSaver.h" />
-    <ClInclude Include="waveformBuilder.h" />
+    <ClInclude Include="WaveformBuilder.h" />
+    <ClInclude Include="waveformBuilderBase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
