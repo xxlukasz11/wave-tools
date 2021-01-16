@@ -2,11 +2,14 @@
 
 #include "waveFileBuilder.h"
 #include "sineWaveformBuilder.h"
+#include "sawtoothWaveformBuilder.h"
 #include <cmath>
 #include <fstream>
 
-void printHex() {
-	std::ifstream ff("file.wav", std::fstream::binary);
+static const std::string FILE_NAME = "file.wav";
+
+void printHeaderInHex() {
+	std::ifstream ff(FILE_NAME, std::fstream::binary);
 	for (int i = 0; i < 40; ++i) {
 		if (i % 4 == 0 && i != 0) {
 			std::cout << std::endl;
@@ -24,15 +27,20 @@ int main() {
 		.setSampleRate(SampleRate::FREQ_44100Hz)
 		.build();
 
-	printHex();
-
-	const WaveformBuilder& builder = SineWaveformBuilder::newBuilder()
+	const WaveformBuilder& sineBuilder = SineWaveformBuilder::newBuilder()
 		.setAmplitudeByPercentage(0.3)
 		.setFrequency(Frequency::ofHertz(200))
-		.setDuration(Duration::ofSeconds(3));
+		.setDuration(Duration::ofSeconds(2));
 
-	builder.appendWaveformToFile(file);
+	const WaveformBuilder& sawtoothBuilder = SawtoothWaveformBuilder::newBuilder()
+		.setAmplitudeByPercentage(0.3)
+		.setFrequency(Frequency::ofHertz(200))
+		.setDuration(Duration::ofSeconds(2));
 
-	file.save("file.wav");
+	sineBuilder.appendWaveformToFile(file);
+	sawtoothBuilder.appendWaveformToFile(file);
+
+	file.save(FILE_NAME);
+	printHeaderInHex();
 	return 0;
 }
