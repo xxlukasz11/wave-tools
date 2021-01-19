@@ -2,12 +2,14 @@
 
 #include "waveformBuilderBase.h"
 
-class SineWaveformBuilder : public WaveformBuilderBase<SineWaveformBuilder> {
+class TriangleWaveformBuilder : public WaveformBuilderBase<TriangleWaveformBuilder> {
 public:
-	static SineWaveformBuilder newBuilder();
+	static TriangleWaveformBuilder newBuilder();
 
 private:
-	SineWaveformBuilder() = default;
+	TriangleWaveformBuilder() = default;
 	int64_t calculateSampleValue(const uint64_t timeIndex, const uint64_t amplitude,
 		const uint32_t frequency, const uint32_t sampleRate) const override;
+	double triangleFunction(const double arg) const;
 };
+

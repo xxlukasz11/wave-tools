@@ -3,6 +3,7 @@
 #include "waveFileBuilder.h"
 #include "sineWaveformBuilder.h"
 #include "sawtoothWaveformBuilder.h"
+#include "triangleWaveformBuilder.h"
 #include <cmath>
 #include <fstream>
 
@@ -33,12 +34,18 @@ int main() {
 		.setDuration(Duration::ofSeconds(2));
 
 	const WaveformBuilder& sawtoothBuilder = SawtoothWaveformBuilder::newBuilder()
-		.setAmplitudeByPercentage(0.3)
+		.setAmplitudeByPercentage(0.2)
+		.setFrequency(Frequency::ofHertz(200))
+		.setDuration(Duration::ofSeconds(2));
+
+	const WaveformBuilder& triangleBuilder = TriangleWaveformBuilder::newBuilder()
+		.setAmplitudeByPercentage(0.2)
 		.setFrequency(Frequency::ofHertz(200))
 		.setDuration(Duration::ofSeconds(2));
 
 	sineBuilder.appendWaveformToFile(file);
 	sawtoothBuilder.appendWaveformToFile(file);
+	triangleBuilder.appendWaveformToFile(file);
 
 	file.save(FILE_NAME);
 	printHeaderInHex();

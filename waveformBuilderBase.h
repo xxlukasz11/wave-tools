@@ -26,11 +26,11 @@ protected:
 	const AmplitudeHandler& getAmplitudeHandler() const;
 
 private:
-	virtual uint64_t calculateSampleValue(const uint64_t timeIndex, const uint64_t amplitude,
+	virtual int64_t calculateSampleValue(const uint64_t timeIndex, const uint64_t amplitude,
 		const uint32_t frequency, const uint32_t sampleRate) const = 0;
 
 	DataBuffer generateWaveform(const FmtSubChunk& fmtSubChunk) const;
-	void appendForEveryChannel(DataBuffer& buffer, const uint64_t value,
+	void appendForEveryChannel(DataBuffer& buffer, const int64_t value,
 		const int numChannels, const int bytesPerSample) const;
 
 	T& self();
@@ -117,7 +117,7 @@ DataBuffer WaveformBuilderBase<T>::generateWaveform(const FmtSubChunk& fmtSubChu
 
 	DataBuffer buffer(noOfSamples * blockAlign);
 	for (uint64_t timeIndex = 0; timeIndex < noOfSamples; ++timeIndex) {
-		const uint64_t value = offset + calculateSampleValue(timeIndex, amplitude, frequency, sampleRate);
+		const int64_t value = offset + calculateSampleValue(timeIndex, amplitude, frequency, sampleRate);
 		appendForEveryChannel(buffer, value, numChannels, bytesPerSample);
 	}
 	return buffer;
@@ -125,7 +125,7 @@ DataBuffer WaveformBuilderBase<T>::generateWaveform(const FmtSubChunk& fmtSubChu
 
 template<typename T>
 void WaveformBuilderBase<T>::appendForEveryChannel(DataBuffer& buffer,
-	const uint64_t value, const int numChannels, const int bytesPerSample) const {
+	const int64_t value, const int numChannels, const int bytesPerSample) const {
 	constexpr uint8_t BYTE_MASK = 0xff;
 	for (int channel = 0; channel < numChannels; ++channel) {
 		for (int byteIndex = 0; byteIndex < bytesPerSample; ++byteIndex) {

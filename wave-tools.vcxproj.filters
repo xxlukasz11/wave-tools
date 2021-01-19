@@ -81,6 +81,9 @@
     <ClCompile Include="sawtoothWaveformBuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="triangleWaveformBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="riffHeader.h">
@@ -147,6 +150,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sawtoothWaveformBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="triangleWaveformBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

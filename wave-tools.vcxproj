@@ -159,6 +159,7 @@
     <ClCompile Include="sawtoothWaveformBuilder.cpp" />
     <ClCompile Include="sineWaveformBuilder.cpp" />
     <ClCompile Include="subChunk.cpp" />
+    <ClCompile Include="triangleWaveformBuilder.cpp" />
     <ClCompile Include="waveFile.cpp" />
     <ClCompile Include="waveFileBuilder.cpp" />
     <ClCompile Include="waveFileSaver.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="sawtoothWaveformBuilder.h" />
     <ClInclude Include="sineWaveformBuilder.h" />
     <ClInclude Include="subChunk.h" />
+    <ClInclude Include="triangleWaveformBuilder.h" />
     <ClInclude Include="waveFile.h" />
     <ClInclude Include="waveFileBuilder.h" />
     <ClInclude Include="waveFileSaver.h" />
