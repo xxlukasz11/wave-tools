@@ -1,9 +1,18 @@
 #include "triangleWaveformBuilder.h"
 
-constexpr double PERIOD_2 = 0.5;
+constexpr double DEFAULT_PEAK_POSITION = 0.5;
 
 TriangleWaveformBuilder TriangleWaveformBuilder::newBuilder() {
     return TriangleWaveformBuilder();
+}
+
+TriangleWaveformBuilder::TriangleWaveformBuilder() : mPeakPosition(DEFAULT_PEAK_POSITION) {}
+
+TriangleWaveformBuilder& TriangleWaveformBuilder::setRelativePeakPosition(const double ratio) {
+    if (ratio >= 0.0 && ratio <= 1.0) {
+        mPeakPosition = ratio;
+    }
+    return *this;
 }
 
 int64_t TriangleWaveformBuilder::calculateSampleValue(const uint64_t timeIndex, const uint64_t amplitude, const uint32_t frequency, const uint32_t sampleRate) const {
@@ -14,8 +23,8 @@ int64_t TriangleWaveformBuilder::calculateSampleValue(const uint64_t timeIndex, 
 double TriangleWaveformBuilder::triangleFunction(const double arg) const {
     const auto value = static_cast<uint64_t>(arg);
     const double fraction = arg - value;
-    if (fraction < PERIOD_2) {
+    if (fraction < mPeakPosition) {
         return 4 * fraction - 1;
     }
-    return 1 - 4 * (fraction - PERIOD_2);
+    return 1 - 4 * (fraction - mPeakPosition);
 }

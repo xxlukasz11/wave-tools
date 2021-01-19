@@ -41,7 +41,8 @@ int main() {
 	const WaveformBuilder& triangleBuilder = TriangleWaveformBuilder::newBuilder()
 		.setAmplitudeByPercentage(0.2)
 		.setFrequency(Frequency::ofHertz(200))
-		.setDuration(Duration::ofSeconds(2));
+		.setDuration(Duration::ofSeconds(2))
+		.setRelativePeakPosition(0.2);
 
 	sineBuilder.appendWaveformToFile(file);
 	sawtoothBuilder.appendWaveformToFile(file);
